@@ -1,17 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import turtle
 import random
 from random import randint, shuffle
 from time import sleep
-
-
-# In[2]:
-
 
 grid = []
 grid.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -25,9 +15,6 @@ grid.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 grid.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
 
-# In[3]:
-
-
 #using turtle to make the grid for the sudoku game. I will name him "bob".I want bob to be a cat but idk if thats possible.
 bob= turtle.Turtle()
 turtle.title("Bob's Sudoku")
@@ -37,18 +24,11 @@ bob.shape("turtle")
 topLeft_x=-150
 topLeft_y=150
 
-
-# In[4]:
-
-
 def text(message,x,y,size):
     FONT = ('Times New Roman', size, 'normal')
     bob.penup()
     bob.goto(x,y)    		  
     bob.write(message,align="left",font=FONT)
-
-
-# In[5]:
 
 
 #now I need to draw the sudoku map using bob I want the outside to be a thicker border than the inside
@@ -82,19 +62,13 @@ def drawGrid(grid):
         
 
 
-# In[6]:
-
-
 def checkGrid(grid):
-  for row in range(0,9):
+    for row in range(0,9):
       for col in range(0,9):
         if grid[row][col]==0:
           return False
     
   return True 
-
-
-# In[7]:
 
 
 def solveGrid(grid):
@@ -147,9 +121,6 @@ def solveGrid(grid):
 numberList=[1,2,3,4,5,6,7,8,9]
 
 
-# In[8]:
-
-
 #Using a backtracking/recursive function to help generate a possible sudoku solution 
 def fillGrid(grid):
   global counter
@@ -199,21 +170,15 @@ def fillGrid(grid):
   grid[row][col]=0             
 
 
-# In[9]:
-
-
 fillGrid(grid)
 drawGrid(grid) 
 bob.getscreen().update()
 sleep(5)
 
 
-# In[10]:
-
-
 #Now we have a full sudoku solution that bob has drawn for us (thanks bob!) now we need to create a solvable sudoku map!
 #I want this to be aple to be able to create different levels of difficulty so I will be using a random number generator on the number attempts
-#the more the attempts = the more difficult the problem so here I have max difficulty set to 7
+#the more the attempts = the more difficult the problem so here I have max difficulty set to 6
 
 attempts = random.randint(2,6)
 counter = 1
@@ -246,18 +211,11 @@ while attempts>0:
 print("Bob's hand-made puzzle ... for you!")
 text("Bob's hand-made puzzle ... for you!", -175,-250,20)
       
-
-
-# In[11]:
-
-
+    
 #Well this takes an absolutely long time but it works!
 #I will just have to come back to it later! Now I want to solve it but I want enough time to copy it down and work it out!
 #I want to try a sleep function 
 sleep(20)
-
-
-# In[12]:
 
 
 #Now I want to have bob solve his puzzle! I will be checking the rows and the columns to see if a values from [1,10] have been used.
@@ -313,9 +271,6 @@ drawGrid(grid)
 bob.getscreen().update()
 
 
-# In[13]:
-
-
 complete = solveGrid(grid)
 if complete:
   print("Bob is done!")
@@ -327,7 +282,8 @@ else:
 bob.getscreen().update()	
 
 
-# In[ ]:
+#Now that is it! This is something I am going to comback to and try to clean up some more later! I feel like there is a more effective way for me to code this and I will come back to it once I have found a better way!
+
 
 
 
